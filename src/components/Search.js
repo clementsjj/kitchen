@@ -1,13 +1,20 @@
-import React, { Component } from "react";
-import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import Cardy from "./Cardy";
+import React, { Component } from 'react';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Cardy from './Cardy';
+import Axios from 'axios';
 
 class Search extends Component {
-  onSearchInputChange = event => {
-    console.log("Search: ");
+  state = {
+    search: '',
+    recipes: ''
   };
+
+  onSearchInputChange = event => {
+    console.log('Search: ');
+  };
+
   render() {
     return (
       <div>
@@ -20,13 +27,8 @@ class Search extends Component {
         />
         <br />
         <Button variant="contained" color="primary">
-          Submit
+          Search
         </Button>
-        <Grid container spacing={24} style={{ padding: 24 }}>
-          <Grid iem xs={12} sm={6} lg={4} xl={3}>
-            <Cardy />
-          </Grid>
-        </Grid>
       </div>
     );
   }

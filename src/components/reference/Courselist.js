@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import Grid from "@material-ui/core";
-import TextField from "@material-ui/core/TextField";
-import * as contenful from "contentful";
+import React, { Component } from 'react';
+import Grid from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
+import * as contenful from 'contentful';
 
-import Course from "../components/Course";
+import Course from './Course';
 
-const SPACE_ID = "[Insert Contentful Space Id]";
-const ACCESS_TOKEN = "[Insert Contenful Access Token]";
+const SPACE_ID = '[Insert Contentful Space Id]';
+const ACCESS_TOKEN = '[Insert Contenful Access Token]';
 
 const client = contenful.createClient({
   space: SPACE_ID,
@@ -16,7 +16,7 @@ const client = contenful.createClient({
 class Courselist extends Component {
   state = {
     courses: [],
-    searchString: ""
+    searchString: ''
   };
 
   constructor() {
@@ -27,7 +27,7 @@ class Courselist extends Component {
   getCourses = () => {
     client
       .getEntries({
-        content_type: "course",
+        content_type: 'course',
         query: this.state.searchString
       })
       .then(response => {
@@ -35,17 +35,17 @@ class Courselist extends Component {
         console.log(this.state.courses);
       })
       .catch(error => {
-        console.log("Error occured while fetching entries");
+        console.log('Error occured while fetching entries');
         console.log(error);
       });
   };
 
   onSearchInputChange = event => {
-    console.log("Search changed ..." + event.target.value);
+    console.log('Search changed ...' + event.target.value);
     if (event.target.value) {
       this.setState({ searchString: event.target.value });
     } else {
-      this.setState({ searchString: "" });
+      this.setState({ searchString: '' });
     }
     this.getCourses();
   };
@@ -71,7 +71,7 @@ class Courselist extends Component {
             </Grid>
           </div>
         ) : (
-          "No courses found"
+          'No courses found'
         )}
       </div>
     );

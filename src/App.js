@@ -1,8 +1,10 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import Search from "./components/Search";
-import Navbar from "./components/Navbar";
+import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
+import Search from './components/Search';
+import Navbar from './components/Navbar';
+import Fridge from './components/Fridge';
+
 //import Courselist from "./components/Courselist";
 
 class App extends Component {
@@ -15,7 +17,9 @@ class App extends Component {
         </header> */}
         <Navbar />
         <Search />
-        <div className="mdc-card">Simple</div>
+        <Fridge />
+        <br />
+        <div className="mdc-card">Results</div>
       </div>
     );
   }

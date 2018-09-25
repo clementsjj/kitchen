@@ -26,9 +26,9 @@ function Cardy(props) {
     <Card>
       <CardContent>
         <Typography variant="headline" component="h2">
-          Content
+          The Fridge
         </Typography>
-        <Typography component="p">More Content</Typography>
+        <Typography component="p">Where items can go.</Typography>
       </CardContent>
     </Card>
   );
