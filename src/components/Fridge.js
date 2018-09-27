@@ -8,16 +8,16 @@ import { addItem, deleteItem } from '../actions';
 
 class Fridge extends Component {
   handleDeleteItem = item => {
-    console.log(item);
+    //console.log(item);
 
     this.props.deleteItem(item);
   };
 
   render() {
-    console.log('-----');
-    console.log('From Fridge: ');
-    console.log(this.props);
-    console.log('-----');
+    //console.log('-----');
+    //console.log('From Fridge: ');
+    //console.log(this.props);
+    //console.log('-----');
     let items;
     return (
       <Card>

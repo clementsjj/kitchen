@@ -11,15 +11,20 @@ const commonIngredients = ['eggs', 'milk', 'sugar', 'flour'];
 
 class CommonIngredients extends Component {
   state = {
-    jj: []
+    isDisabled: false
   };
 
   handleClick = event => {
     console.log('Click: ' + event.target.name);
+    //this.state.disabled = !this.state.disabled;
     let updated = Object.assign({}, this.state.fridge);
-    //updated =
-    this.props.addItem(event.target.name);
-    this.setState({});
+
+    if (!this.props.fridge.ingredients.includes(event.target.name)) {
+      //console.log('***JJ***');
+      this.props.addItem(event.target.name);
+    }
+
+    //this.setState({});
     //console.log('Update: ' + updated);
   };
 
@@ -48,6 +53,7 @@ class CommonIngredients extends Component {
                   name={item}
                   variant="outlined"
                   color="primary"
+                  //disabled={this.state.isDisabled}
                 >
                   {item}
                 </Button>

@@ -73,8 +73,6 @@ export const addItem = item => {
 };
 
 export const deleteItem = item => {
-  console.log('-----');
-  console.log(item);
   return {
     type: DELETE_ITEM,
     data: item
