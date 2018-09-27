@@ -5,11 +5,13 @@ import Typography from "@material-ui/core/Typography";
 
 const primary = "#512da8";
 const purple = "#512da8";
-
+const style = {
+  background: "#512da8"
+};
 const Navbar = () => {
   return (
     <div>
-      <AppBar position="static" inkbarstyle={{ background: purple }}>
+      <AppBar position="static" style={style}>
         <Toolbar>
           <Typography variant="title" color="inherit">
             The Kitchen

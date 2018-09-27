@@ -18,6 +18,8 @@ class Home extends Component {
         <Fridge />
         <br />
         <Results />
+        <br />
+        <p>Hello</p>
       </div>
     );
   }
