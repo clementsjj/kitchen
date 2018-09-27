@@ -7,6 +7,12 @@ import { connect } from 'react-redux';
 import { addItem, deleteItem } from '../actions';
 
 class Fridge extends Component {
+  handleDeleteItem = item => {
+    console.log(item);
+
+    this.props.deleteItem(item);
+  };
+
   render() {
     console.log('-----');
     console.log('From Fridge: ');
@@ -21,7 +27,14 @@ class Fridge extends Component {
           </Typography>
           {
             (items = this.props.fridge.ingredients.map((item, index) => {
-              return <Button variant="outlined">{item}</Button>;
+              return (
+                <Button
+                  variant="outlined"
+                  onClick={this.handleDeleteItem.bind(this, item)}
+                >
+                  {item}
+                </Button>
+              );
             }))
           }
         </CardContent>

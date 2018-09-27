@@ -20,9 +20,16 @@ export default (state = initialState, action) => {
       return updated;
 
     case DELETE_ITEM:
-      fridge = Object.assign([], updated.fridge);
-      fridge.splice(0, 1);
-      updated['fridge'] = fridge;
+      // fridge = Object.assign([], updated.fridge);
+      // fridge.splice(0, 1);
+      // updated['fridge'] = fridge;
+
+      let filtered = fridge.filter(item => {
+        return item !== action.data;
+      });
+
+      updated.ingredients = filtered;
+
       return updated;
 
     default:

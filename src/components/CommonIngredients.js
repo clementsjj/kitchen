@@ -11,7 +11,7 @@ const commonIngredients = ['eggs', 'milk', 'sugar', 'flour'];
 
 class CommonIngredients extends Component {
   state = {
-    //fridge: []
+    jj: []
   };
 
   handleClick = event => {
@@ -24,7 +24,7 @@ class CommonIngredients extends Component {
   };
 
   render() {
-    console.log(this.props);
+    //console.log(this.props);
     let items;
 
     // if (this.props.fridge.ingredients.length > 0) {

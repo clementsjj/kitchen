@@ -4,18 +4,18 @@ import {
   FETCH_CLICKED_RECIPE,
   ADD_ITEM,
   DELETE_ITEM
-} from "../constants";
-import axios from "axios";
+} from '../constants';
+import axios from 'axios';
 
 // Point the import to the API Key file you want to use
-import { FOOD_API_KEY_HEADER } from "./apiKey-JJ";
+import { FOOD_API_KEY_HEADER } from './apiKey-JJ';
 
 const Axios = axios.create({
-  baseURL: "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com",
+  baseURL: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com',
   timeout: 1000,
   headers: {
-    "X-Mashape-Key": `${FOOD_API_KEY_HEADER}`,
-    "X-Mashape-Host": "spoonacular-recipe-food-nutrition-v1.p.mashape.com"
+    'X-Mashape-Key': `${FOOD_API_KEY_HEADER}`,
+    'X-Mashape-Host': 'spoonacular-recipe-food-nutrition-v1.p.mashape.com'
   }
 });
 
@@ -73,6 +73,8 @@ export const addItem = item => {
 };
 
 export const deleteItem = item => {
+  console.log('-----');
+  console.log(item);
   return {
     type: DELETE_ITEM,
     data: item
