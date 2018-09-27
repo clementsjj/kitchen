@@ -26,7 +26,8 @@ class CommonIngredients extends Component {
               <Button
                 onClick={this.handleClick}
                 name={item}
-                variant="contained">
+                variant="outlined"
+                color="primary">
                 {item}
               </Button>
             );
