@@ -1,16 +1,16 @@
-import React from 'react';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
 
 const styles = {
   card: {
     minWidth: 275
   },
   bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)'
+    display: "inline-block",
+    margin: "0 2px",
+    transform: "scale(0.8)"
   },
   title: {
     marginBottom: 16,
@@ -21,7 +21,7 @@ const styles = {
   }
 };
 
-function Cardy(props) {
+function Fridge(props) {
   return (
     <Card>
       <CardContent>
@@ -34,4 +34,4 @@ function Cardy(props) {
   );
 }
 
-export default Cardy;
+export default Fridge;

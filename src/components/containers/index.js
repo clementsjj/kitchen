@@ -1,7 +1,5 @@
-import SearchRecipes from './SearchRecipes';
-import RecipeInfo from './RecipeInfo';
+import SearchRecipes from "./SearchRecipes";
+import RecipeInfo from "./RecipeInfo";
+import SearchIngredients from "./SearchIngredients";
 
-export {
-    SearchRecipes,
-    RecipeInfo
-}
+export { SearchRecipes, SearchIngredients, RecipeInfo };

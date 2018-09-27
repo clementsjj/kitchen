@@ -1,7 +1,5 @@
-import Results from './Results';
-import Recipe from './Recipe';
+import Results from "./Results";
+import Recipe from "./Recipe";
+import Item from "./Item";
 
-export {
-    Results,
-    Recipe
-}
+export { Results, Recipe, Item };

@@ -1,18 +1,37 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
 
-const Results = (props) => {
-    return (
-        <div style={{float: 'left', height: 500, width: 500}}>
-            <Link to={`recipe/${props.item.id}`} ><img src={props.item.image} /></Link>
-            <br />
-            <span>{props.item.title}</span>
-            <br />
-            <span>Used ingredients: {props.item.usedIngredientCount}</span>
-            <br />
-            <span>Missed ingredients: {props.item.missedIngredientCount}</span>
-        </div>
-    )
+const styles = {
+  card: {
+    minWidth: 275
+  },
+  bullet: {
+    display: "inline-block",
+    margin: "0 2px",
+    transform: "scale(0.8)"
+  },
+  title: {
+    marginBottom: 16,
+    fontSize: 14
+  },
+  pos: {
+    marginBottom: 12
+  }
+};
+
+function Results(props) {
+  return (
+    <Card>
+      <CardContent>
+        <Typography variant="headline" component="h2">
+          Results
+        </Typography>
+        <Typography component="p">Where results can go.</Typography>
+      </CardContent>
+    </Card>
+  );
 }
 
 export default Results;
