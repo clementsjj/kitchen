@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { SearchRecipes } from "../containers";
+import { SearchIngredients } from "../containers";
 import Search from "../Search";
 import Navbar from "../Navbar";
 import Fridge from "../Fridge";
@@ -12,6 +12,7 @@ class Home extends Component {
       <div>
         <Navbar />
         <Search />
+        {/* <SearchIngredients /> */}
         <br />
         <CommonIngredients />
         <br />

@@ -1,11 +1,7 @@
-Add Button to Fridge:
-
-- Disabled when nothing in the fridge
-
 Ingredients Search
 
-- Search button next to search box
-- Results box below search box
+- Search disabled unless text in search box
+  - Try finding the object/array that holds the input data, and test if its empty to enable/disable the search box
 - Click ingredient to add to fridge, and remove from search results box
 
 Get Recipes Button
