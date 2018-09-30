@@ -21,24 +21,22 @@ const styles = {
 };
 
 const RecipeResultCard = props => {
-  //const { classes, item } = props;
+  const { classes } = props;
+  console.log("Props: ", props.data);
   return (
-    <Card /* className={classes.card} */>
+    <Card className={classes.card}>
       <CardActionArea justify="center">
         <CardMedia
-          /* className={classes.media} */
-          /*           src={this.props.recipes.fetchedRecipes.image}
- */ title="Sudo rm"
+          className={classes.media}
+          image={props.data.image}
+          title="Sudo rm"
         />
         <CardContent>
           <Typography gutterBottom variant="headline" component="h2">
-            {this.props.recipes.fetchedRecipes.title}
+            {props.data.title}
           </Typography>
           <Typography component="p">
-            Missing Ingredient Count:{" "}
-            <span>
-              {this.props.recipes.fetchedRecipes.missedIngredientCount}
-            </span>
+            Missing Ingredient Count: {props.data.missedIngredientCount}
           </Typography>
         </CardContent>
       </CardActionArea>

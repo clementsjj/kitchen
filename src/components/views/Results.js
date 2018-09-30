@@ -34,7 +34,7 @@ class Results extends Component {
     if (this.props.recipes.fetchedRecipes !== null) {
       returnedRecipes = this.props.recipes.fetchedRecipes.map((item, index) => {
         console.log("Item: ", item);
-        return <RecipeResultCard item={item} key={index} />;
+        return <RecipeResultCard data={item} key={index} />;
       });
     } else returnedRecipes = <p />;
 
