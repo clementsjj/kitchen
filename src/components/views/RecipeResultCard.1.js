@@ -22,11 +22,7 @@ const styles = {
 //const { classes } = props;
 
 class RecipeResultCard extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
-    console.log("Pic Src: ", this.props.recipes.fetchedRecipes.image);
     return (
       <Card /* className={classes.card} */>
         <CardActionArea justify="center">
@@ -60,18 +56,19 @@ class RecipeResultCard extends Component {
 
 //export default withStyles(styles)(ResultCard);
 
-// export default connect(
-//     mapStateToProps,
-//     { fetchRecipes }
-//   )(SearchRecipes);
+export default connect(
+  mapStateToProps,
+  { fetchRecipes }
+)(RecipeResultCard);
 
 const mapStateToProps = state => ({
-  recipes: state.recipes
+  recipes: state.recipes,
+  fridge: state.fridge
 });
 
-export default withStyles(styles)(
-  connect(
-    mapStateToProps,
-    { fetchRecipes }
-  )(RecipeResultCard)
-);
+// export default withStyles(styles)(
+//   connect(
+//     mapStateToProps,
+//     { fetchRecipes }
+//   )(RecipeResultCard)
+// );

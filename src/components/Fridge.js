@@ -4,7 +4,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
-import { addItem, deleteItem } from "../actions";
+import { addItem, deleteItem, fetchRecipes } from "../actions";
 
 class Fridge extends Component {
   state = {
@@ -14,6 +14,12 @@ class Fridge extends Component {
     //console.log(item);
 
     this.props.deleteItem(item);
+  };
+
+  handleRecipeSearch = event => {
+    //console.log("this Fridge: ", this.props.fridge.ingredients);
+    this.props.fetchRecipes(this.props.fridge.ingredients);
+    //console.log("Fetched Recipes: ", this.props.recipes.fetchedRecipes);
   };
 
   render() {
@@ -46,7 +52,8 @@ class Fridge extends Component {
           <Button
             variant="raised"
             disabled={this.state.isButtonDisabled}
-            color="primary">
+            color="primary"
+            onClick={this.handleRecipeSearch}>
             Search Recipes
           </Button>
         </CardContent>
@@ -56,10 +63,11 @@ class Fridge extends Component {
 }
 
 const mapStateToProps = state => ({
-  fridge: state.fridge
+  fridge: state.fridge,
+  recipes: state.recipes
 });
 
 export default connect(
   mapStateToProps,
-  { addItem, deleteItem }
+  { addItem, deleteItem, fetchRecipes }
 )(Fridge);

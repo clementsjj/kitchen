@@ -1,40 +1,35 @@
-import { FETCH_RECIPES, FETCH_CLICKED_RECIPE } from '../constants';
+import { FETCH_RECIPES, FETCH_CLICKED_RECIPE } from "../constants";
 
 let initialState = {
-    fetchedRecipes: null,
-    clickedRecipe: null
-}
+  fetchedRecipes: null,
+  clickedRecipe: null
+};
 
 export default (state = initialState, action) => {
+  let updated = Object.assign({}, state);
 
-    let updated = Object.assign({}, state);
+  switch (action.type) {
+    case FETCH_RECIPES:
+      // let fetchedTitleRecipe = action.data;
 
-    switch(action.type) {
+      // updated.fetchedRecipes = fetchedTitleRecipe;
 
-        case FETCH_RECIPES:
+      // return updated;
+      let recipes = action.data.data;
 
-            // let fetchedTitleRecipe = action.data;
+      console.log("Recipes: ", recipes);
 
-            // updated.fetchedRecipes = fetchedTitleRecipe;
+      updated.fetchedRecipes = recipes;
 
-            // return updated;
-            let recipes = action.data.data;
-            
-            console.log(recipes);
+      return updated;
 
-            updated.fetchedRecipes = recipes;
+    case FETCH_CLICKED_RECIPE:
+      let clickedRecipe = action.data.data;
 
-            return updated;
+      updated.clickedRecipe = clickedRecipe;
 
-        case FETCH_CLICKED_RECIPE:
-
-            let clickedRecipe = action.data.data;
-
-            updated.clickedRecipe = clickedRecipe;
-
-            return updated
-        default: 
-            return state;
-    }
-
-}
+      return updated;
+    default:
+      return state;
+  }
+};
