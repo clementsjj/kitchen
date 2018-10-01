@@ -5,6 +5,7 @@ import Navbar from "../Navbar";
 import Fridge from "../Fridge";
 import CommonIngredients from "../CommonIngredients";
 import { Results } from "../views";
+import Footer from "../Footer";
 
 class Home extends Component {
   render() {
@@ -12,7 +13,6 @@ class Home extends Component {
       <div>
         <Navbar />
         <Search />
-        {/* <SearchIngredients /> */}
         <br />
         <CommonIngredients />
         <br />
@@ -20,7 +20,11 @@ class Home extends Component {
         <br />
         <Results />
         <br />
-        <p>Hello</p>
+        <br />
+        <br />
+        <br />
+        <br />
+        <Footer />
       </div>
     );
   }
