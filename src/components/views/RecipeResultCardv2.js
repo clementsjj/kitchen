@@ -7,7 +7,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import samplePic from "../../assets/images/sudo-rm.gif";
 import { connect } from "react-redux";
-import { fetchRecipes } from "../../actions";
+import { fetchRecipes, getClickedRecipe } from "../../actions";
 
 const styles = {
   card: {
@@ -22,6 +22,10 @@ const styles = {
 //const { classes } = props;
 
 class RecipeResultCard extends Component {
+  handleCardClick() {
+    console.log("Card Clicked: ", event.target.data.title);
+  }
+
   render() {
     return (
       <Card /* className={classes.card} */>
@@ -30,18 +34,16 @@ class RecipeResultCard extends Component {
             /*             className={classes.media}
  */
 
-            src={this.props.recipes.fetchedRecipes.image}
+            src={props.recipes.fetchedRecipes.image}
             title="Sudo rm"
           />
           <CardContent>
             <Typography gutterBottom variant="headline" component="h2">
-              {this.props.recipes.fetchedRecipes.title}
+              {props.data.fetchedRecipes.title}
             </Typography>
             <Typography component="p">
-              Missing Ingredient Count:{" "}
-              <span>
-                {this.props.recipes.fetchedRecipes.missedIngredientCount}
-              </span>
+              Missing Ingredient Count:
+              {props.data.missedIngredientCount}
             </Typography>
           </CardContent>
         </CardActionArea>
@@ -56,19 +58,18 @@ class RecipeResultCard extends Component {
 
 //export default withStyles(styles)(ResultCard);
 
-export default connect(
-  mapStateToProps,
-  { fetchRecipes }
-)(RecipeResultCard);
-
 const mapStateToProps = state => ({
-  recipes: state.recipes,
-  fridge: state.fridge
+  recipes: state.recipes
 });
 
-// export default withStyles(styles)(
-//   connect(
-//     mapStateToProps,
-//     { fetchRecipes }
-//   )(RecipeResultCard)
-// );
+// export default connect(
+//   mapStateToProps,
+//   { fetchRecipes }
+// )(RecipeResultCard);
+
+export default withStyles(styles)(
+  connect(
+    mapStateToProps,
+    { getClickedRecipe }
+  )(RecipeResultCardv2)
+);

@@ -1,15 +1,33 @@
 import React, { Component } from "react";
+import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
+import Button from "@material-ui/core/Button";
 import CardContent from "@material-ui/core/CardContent";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Modal from "@material-ui/core/Modal";
+import CardActionArea from "@material-ui/core/CardActionArea";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 //import ResultCardSample from "../views/ResultCardSample";
 import RecipeResultCard from "../views/RecipeResultCard";
+//import RecipeResultCardv2 from "../views/RecipeResultCardv2";
 import Grid from "@material-ui/core/Grid";
 import { connect } from "react-redux";
-import { addItem, deleteItem, fetchRecipes } from "../../actions";
+import {
+  addItem,
+  deleteItem,
+  fetchRecipes,
+  getClickedRecipe
+} from "../../actions";
 
-const styles = {
+// ***************
+//Material UI settings
+// ***************
+const styles = theme => ({
   card: {
     minWidth: 275
   },
@@ -24,17 +42,197 @@ const styles = {
   },
   pos: {
     marginBottom: 12
+  },
+  paper: {
+    position: "absolute",
+    width: theme.spacing.unit * 50,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing.unit * 4
+  },
+  root: {
+    width: "100%",
+    marginTop: theme.spacing.unit * 3,
+    overflowX: "auto"
+  },
+  table: {
+    minWidth: "80%"
   }
+});
+const rand = () => {
+  return Math.round(Math.random() * 20) - 10;
+};
+
+const getModalStyle = () => {
+  //const top = 50 + rand();
+  const top = 5;
+  const left = 5;
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transfrom: `translate(-${top}%, -${left}%)`
+  };
 };
 
 let returnedRecipes;
-
+let id = null;
+let rows = [];
+let cd;
+// ***************
+//Results Class
+// ***************
 class Results extends Component {
+  state = {
+    open: false,
+    recipeID: null
+  };
+
+  handleOpen = () => {
+    this.setState({ open: true });
+  };
+  handleClose = () => {
+    this.setState({ open: false });
+    this.setState({ recipeID: null });
+  };
+
+  // createData(ingredient, amount) {
+  //   tableID += 1;
+  //   return { id, ingredient, amount };
+  // }
+
+  handleCardClick(item) {
+    id = item.id;
+    this.state.recipeID = item.id;
+
+    console.log("Clicked Card ID: ", id);
+    console.log("ClickedRecipe: ", this.props.recipes.clickedRecipe);
+
+    this.state.open = !this.state.open;
+    this.props.getClickedRecipe(id);
+
+    let tableID = 0;
+    let tempArr = [];
+
+    // this.props.recipes.extendedIngredients.map(item => {
+    //   let createData = (name, ingredient) => {
+    //     name = item.name;
+    //     ingredient = item.id;
+    //     tableID += 1;
+    //     return id, name, ingredient;
+    //   };
+    //   rows.push(createData);
+    // });
+  }
+
   render() {
+    const { classes } = this.props;
+    console.log("***", this.state.open, this.state.recipeID);
+    if (this.state.open && this.props.recipes.clickedRecipe) {
+      return (
+        <Modal
+          open={this.state.open}
+          onClose={this.handleClose}
+          onEscapeKeyDown={this.handleClose}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description">
+          <div style={getModalStyle()} className={classes.paper}>
+            <Typography variant="title" id="modal-title" align="center">
+              <img src={this.props.recipes.clickedRecipe.image} />
+              {this.props.recipes.clickedRecipe.title}
+            </Typography>
+
+            <table>
+              <tr>
+                <th>Ingredient</th>
+                <th>Amount</th>
+              </tr>
+              {
+                (rows = this.props.recipes.clickedRecipe.extendedIngredients.map(
+                  item => {
+                    return (
+                      <tr>
+                        <td>
+                          {
+                            this.props.recipes.clickedRecipe.extendedIngredients
+                              .name
+                          }
+                        </td>
+                        <td>
+                          {
+                            this.props.recipes.clickedRecipe.extendedIngredients
+                              .id
+                          }
+                        </td>
+                      </tr>
+                    );
+                  }
+                ))
+              }
+            </table>
+
+            {/* <Table className={classes.root}>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Ingredient</TableCell>
+                  <TableCell>Amount</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rows.map(row => {
+                  return (
+                    <TableRow key={row.id}>
+                      <TableCell component="th" scope="row">
+                        {
+                          this.props.recipes.clickedRecipe.extendedIngredients
+                            .name
+                        }
+                      </TableCell>
+                      <TableCell numeric>
+                        {
+                          this.props.recipes.clickedRecipe.extendedIngredients
+                            .id
+                        }
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+            </Table> */}
+
+            <Typography variant="body1" />
+            <Typography variant="body1" id="simple-modal-description">
+              Preparation Time:{" "}
+              {this.props.recipes.clickedRecipe.preparationMinutes}
+              <br />
+              Instructions:
+              <br />
+              {this.props.recipes.clickedRecipe.instructions}
+            </Typography>
+            <Typography variant="caption">
+              SourceURL:&nbsp;
+              <a href={this.props.recipes.clickedRecipe.sourceUrl}>
+                {this.props.recipes.clickedRecipe.sourceUrl}{" "}
+              </a>
+              <br />
+              SpoonacularURL:&nbsp;
+              <a href={this.props.recipes.clickedRecipe.spoonacularSourceUrl}>
+                {this.props.recipes.clickedRecipe.spoonacularSourceUrl}
+              </a>
+            </Typography>
+          </div>
+        </Modal>
+      );
+    }
     if (this.props.recipes.fetchedRecipes !== null) {
       returnedRecipes = this.props.recipes.fetchedRecipes.map((item, index) => {
         console.log("Item: ", item);
-        return <RecipeResultCard data={item} key={index} />;
+        return (
+          <div>
+            <CardActionArea onClick={this.handleCardClick.bind(this, item)}>
+              <RecipeResultCard data={item} key={index} />
+            </CardActionArea>
+          </div>
+        );
       });
     } else returnedRecipes = <p />;
 
@@ -62,7 +260,9 @@ const mapStateToProps = state => ({
   recipes: state.recipes
 });
 
-export default connect(
-  mapStateToProps,
-  { addItem, deleteItem, fetchRecipes }
-)(Results);
+export default withStyles(styles)(
+  connect(
+    mapStateToProps,
+    { addItem, deleteItem, fetchRecipes, getClickedRecipe }
+  )(Results)
+);

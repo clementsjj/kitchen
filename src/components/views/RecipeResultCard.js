@@ -22,10 +22,10 @@ const styles = {
 
 const RecipeResultCard = props => {
   const { classes } = props;
-  console.log("Props: ", props.data);
+
   return (
     <Card className={classes.card}>
-      <CardActionArea justify="center">
+      <CardActionArea justify="center" onClick={this.handleCardClick}>
         <CardMedia
           className={classes.media}
           image={props.data.image}
