@@ -1,6 +1,7 @@
 # Fridge
 
 - The fridge app, known by a number of names (name pending), will search recipes with a given set of ingredients.
+- This app is meant to cut through clutter and fluff, and provide a minimalist user experience.
 - It uses Material UI and React.
 - Currently a work in progress, in Alpha.
 
@@ -44,6 +45,7 @@ import { FOOD_API_KEY_HEADER } from './api-key';
 - A page to view individual recipes if you have the recipe id
 - 'About' page and possibly other landing page imporovements
 - Clear recipe book and fridge
+- Add a backend to allow for login and saving recipes, but the app is also meant to be a stand alone recipe search without the fluff.
 
 ### Known Bugs
 
