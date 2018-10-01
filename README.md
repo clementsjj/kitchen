@@ -1,7 +1,7 @@
 # Fridge
 
-- The fridge app, known by a number of names (name pending) will search recipes with a given set of ingredients.
-- It uses material ui.
+- The fridge app, known by a number of names (name pending), will search recipes with a given set of ingredients.
+- It uses Material UI and React.
 - Currently a work in progress, in Alpha.
 
 ## Alpha v.01
