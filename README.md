@@ -27,8 +27,10 @@
 - A more comprehensive experience when viewing the recipe, with more details
 - A page to view individual recipes if you have the recipe id
 - 'About' page and possibly other landing page imporovements
+- Clear recipe book and fridge
 
 ### Known Bugs
 
 - CommonIngredients Button will not disable when added to fridge
 - Recipe may overflow in modal
+- Issues rendering common ingredients buttons and button names in fridge with Chrome. Works ok with Firefox.
