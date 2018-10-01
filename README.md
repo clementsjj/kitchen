@@ -35,3 +35,4 @@
 - Recipe may overflow in modal
 - Issues rendering common ingredients buttons and button names in fridge with Chrome. Works ok with Firefox.
 - "no results." appears under ingredient search when you have recipes loaded
+- Various sized recipe cards returned. Should make consistent size.
