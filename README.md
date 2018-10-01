@@ -1,8 +1,8 @@
 # Fridge
 
-- This is a template for the Whats in the Fridge app.
+- The fridge app, known by a number of names (name pending) will search recipes with a given set of ingredients.
 - It uses material ui.
-- Currently a work in progress.
+- Currently a work in progress, in Alpha.
 
 ## Alpha v.01
 #### Setup
