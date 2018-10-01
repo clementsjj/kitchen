@@ -161,6 +161,7 @@ class Results extends Component {
             <Typography variant="body1" id="simple-modal-description">
               <strong>Preparation Time:</strong>{" "}
               {this.props.recipes.clickedRecipe.preparationMinutes}
+              &nbsp;mins
               <br />
               <strong>Instructions:</strong>
               <br />
