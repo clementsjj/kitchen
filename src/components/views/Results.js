@@ -1,20 +1,10 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import Button from "@material-ui/core/Button";
-import CardContent from "@material-ui/core/CardContent";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
 import Modal from "@material-ui/core/Modal";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
-//import ResultCardSample from "../views/ResultCardSample";
 import RecipeResultCard from "../views/RecipeResultCard";
-//import RecipeResultCardv2 from "../views/RecipeResultCardv2";
 import Grid from "@material-ui/core/Grid";
 import { connect } from "react-redux";
 import {
@@ -45,7 +35,7 @@ const styles = theme => ({
   },
   paper: {
     position: "absolute",
-    width: theme.spacing.unit * 60,
+    width: theme.spacing.unit * 80,
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing.unit * 4
@@ -59,9 +49,6 @@ const styles = theme => ({
     minWidth: "80%"
   }
 });
-const rand = () => {
-  return Math.round(Math.random() * 20) - 10;
-};
 
 const getModalStyle = () => {
   //const top = 50 + rand();
@@ -78,7 +65,7 @@ const getModalStyle = () => {
 //Other Stylings and Variables
 // ***************
 const imageStyle = {
-  height: "100px",
+  height: "200px",
   width: "auto"
 };
 let returnedRecipes;
@@ -102,14 +89,10 @@ class Results extends Component {
     this.setState({ recipeID: null });
   };
 
-  // createData(ingredient, amount) {
-  //   tableID += 1;
-  //   return { id, ingredient, amount };
-  // }
-
   handleCardClick(item) {
     id = item.id;
-    this.state.recipeID = item.id;
+    //this.state.recipeID = item.id;
+    this.setState({ recipeID: item.id });
 
     console.log("Clicked Card ID: ", id);
     console.log("ClickedRecipe: ", this.props.recipes.clickedRecipe);
@@ -119,16 +102,6 @@ class Results extends Component {
 
     let tableID = 0;
     let tempArr = [];
-
-    // this.props.recipes.extendedIngredients.map(item => {
-    //   let createData = (name, ingredient) => {
-    //     name = item.name;
-    //     ingredient = item.id;
-    //     tableID += 1;
-    //     return id, name, ingredient;
-    //   };
-    //   rows.push(createData);
-    // });
   }
 
   render() {
@@ -170,8 +143,12 @@ class Results extends Component {
                   item => {
                     return (
                       <tr>
-                        <td>{item.name}</td>
+                        <td>
+                          {item.name}
+                          &nbsp;
+                        </td>
                         <td style={{ textAlign: "right" }}>
+                          &nbsp;
                           {item.amount} {item.unit}
                         </td>
                       </tr>
@@ -180,36 +157,6 @@ class Results extends Component {
                 ))
               }
             </table>
-
-            {/* <Table className={classes.root}>
-              <TableHead>
-                <TableRow>
-                  <TableCell>Ingredient</TableCell>
-                  <TableCell>Amount</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows.map(row => {
-                  return (
-                    <TableRow key={row.id}>
-                      <TableCell component="th" scope="row">
-                        {
-                          this.props.recipes.clickedRecipe.extendedIngredients
-                            .name
-                        }
-                      </TableCell>
-                      <TableCell numeric>
-                        {
-                          this.props.recipes.clickedRecipe.extendedIngredients
-                            .id
-                        }
-                      </TableCell>
-                    </TableRow>
-                  );
-                })}
-              </TableBody>
-            </Table> */}
-
             <Typography variant="body1" />
             <Typography variant="body1" id="simple-modal-description">
               <strong>Preparation Time:</strong>{" "}
@@ -221,12 +168,16 @@ class Results extends Component {
             </Typography>
             <Typography variant="caption">
               SourceURL:&nbsp;
-              <a href={this.props.recipes.clickedRecipe.sourceUrl}>
+              <a
+                target="_blank"
+                href={this.props.recipes.clickedRecipe.sourceUrl}>
                 {this.props.recipes.clickedRecipe.sourceUrl}{" "}
               </a>
               <br />
               SpoonacularURL:&nbsp;
-              <a href={this.props.recipes.clickedRecipe.spoonacularSourceUrl}>
+              <a
+                target="_blank"
+                href={this.props.recipes.clickedRecipe.spoonacularSourceUrl}>
                 {this.props.recipes.clickedRecipe.spoonacularSourceUrl}
               </a>
             </Typography>
@@ -250,9 +201,9 @@ class Results extends Component {
     return (
       <Paper elevation={12}>
         <Typography variant="headline" component="h2">
-          Results
+          Recipe Book
         </Typography>
-        <Typography component="p">Where recipes can go.</Typography>
+
         <Grid container justify="center">
           {/* <Grid item>
           {[0, 1, 2].map(value => (

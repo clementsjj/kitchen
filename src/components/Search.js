@@ -1,10 +1,16 @@
 import React, { Component } from "react";
+import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import { fetchIngredients, addItem, deleteItem } from "../actions";
 
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
+import ButtonBase from "@material-ui/core/ButtonBase";
+import InputLabel from "@material-ui/core/InputLabel";
+import OutlinedInput from "@material-ui/core/OutlinedInput";
+import Input from "@material-ui/core/Input";
+import FormControl from "@material-ui/core/FormControl";
 
 class Search extends Component {
   constructor(props) {
@@ -29,11 +35,12 @@ class Search extends Component {
 
   handleSearch = event => {
     let value = this.search.current.value;
+    console.log();
     let updated = Object.assign({}, this.state.ingredients);
 
     updated = value;
-    //updated = value.split(",").join("%2C");
-    //console.log(updated);
+    updated = value.split(",").join("%2C");
+    console.log(updated);
 
     this.setState({
       ingredients: updated
@@ -45,10 +52,11 @@ class Search extends Component {
   // };
 
   handleSubmitSearch = event => {
+    console.log("We Are Handling The Search!!");
     event.preventDefault();
 
     this.props.fetchIngredients(this.state.ingredients);
-    event.target.reset();
+    //event.target.reset();
   };
 
   handleButtonClick = event => {
@@ -84,33 +92,52 @@ class Search extends Component {
       tempIngredients = <p>no results.</p>;
     }
 
+    // return (
+    //   <div>
+    //     <form onSubmit={this.handleSubmitSearch}>
+    //       <br />
+
+    //       <input ref={this.search} onKeyUp={this.handleSearch} />
+
+    //       <button>Search for Ingredient</button>
+    //       <br />
+    //       {tempIngredients}
+    //     </form>
+    //   </div>
+    // );
+
+    //************************************************************************************* */
+
     return (
       <div>
         <form onSubmit={this.handleSubmitSearch}>
-          <br />
-          {/* <TextField
-            style={{ padding: 24 }}
+          <TextField
+            label="Ingredient Search"
+            type="search"
             id="searchInput"
-            placeholder="Search for Ingredients"
+            defaultValue=""
+            helperText="Type an ingredient name and click Search"
             margin="normal"
-            onKeyUp={this.handleSearch}
-            ref={this.search}
-          /> */}
-          <input ref={this.search} onKeyUp={this.handleSearch} />
-          {/* <Button
+            onChange={this.handleSearch}
+            inputRef={this.search}
+          />
+          &nbsp;
+          <Button
             variant="contained"
             color="primary"
-            //onClick={this.onSubmitHandler}
+            type="submit"
+            //onSubmit={this.handleSubmitSearch}
+            //onClick={this.handleSubmitSearch}
             //disabled={this.state.isButtonDisabled}
           >
             Search
-          </Button> */}
-          <button>Search for Ingredient</button>
-          <br />
-          {tempIngredients}
+          </Button>
         </form>
+        {tempIngredients}
       </div>
     );
+    ///
+    ///
   }
 }
 

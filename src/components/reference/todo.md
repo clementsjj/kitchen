@@ -17,11 +17,14 @@ To test:
 
 - make common ingredients button disabled by searching the array before returning, toggle isbuttondisabled
 
-Fix Chrome Nameless Buttons:
+### Fix Chrome Nameless Buttons:
+
 onClick={(e) => {
 this.handleButtonClick(e, item.name)
 }}
+
 instead of event, pass the name directly, then change the function to
+
 handleButtonClick = (e, name) => {
 console.log("Click: " + name);
 let updated = Object.assign({}, this.state.fridge);
