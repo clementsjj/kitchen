@@ -2,7 +2,7 @@
 
 - The fridge app, known by a number of names (name pending), will search recipes with a given set of ingredients.
 - This app is meant to cut through clutter and fluff, and provide a minimalist user experience.
-- It uses Material UI and React.
+- It uses React, Redux, and Material UI Components.
 - Currently a work in progress, in Alpha.
 
 ## Alpha v.01
