@@ -45,7 +45,7 @@ const styles = theme => ({
   },
   paper: {
     position: "absolute",
-    width: theme.spacing.unit * 50,
+    width: theme.spacing.unit * 60,
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing.unit * 4
@@ -65,15 +65,22 @@ const rand = () => {
 
 const getModalStyle = () => {
   //const top = 50 + rand();
-  const top = 5;
-  const left = 5;
+  const top = 2;
+  const left = 10;
   return {
     top: `${top}%`,
-    left: `${left}%`,
-    transfrom: `translate(-${top}%, -${left}%)`
+    left: `${left}%`
+    //transfrom: `translate(-${top}%, -${left}%)`
   };
 };
 
+// ***************
+//Other Stylings and Variables
+// ***************
+const imageStyle = {
+  height: "100px",
+  width: "auto"
+};
 let returnedRecipes;
 let id = null;
 let rows = [];
@@ -136,8 +143,20 @@ class Results extends Component {
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description">
           <div style={getModalStyle()} className={classes.paper}>
+            <style>
+              {`
+                table, th{
+                  border: 1px solid black;
+                }
+                
+              `}
+            </style>
             <Typography variant="title" id="modal-title" align="center">
-              <img src={this.props.recipes.clickedRecipe.image} />
+              <img
+                src={this.props.recipes.clickedRecipe.image}
+                style={imageStyle}
+              />
+              <br />
               {this.props.recipes.clickedRecipe.title}
             </Typography>
 
@@ -151,17 +170,9 @@ class Results extends Component {
                   item => {
                     return (
                       <tr>
-                        <td>
-                          {
-                            this.props.recipes.clickedRecipe.extendedIngredients
-                              .name
-                          }
-                        </td>
-                        <td>
-                          {
-                            this.props.recipes.clickedRecipe.extendedIngredients
-                              .id
-                          }
+                        <td>{item.name}</td>
+                        <td style={{ textAlign: "right" }}>
+                          {item.amount} {item.unit}
                         </td>
                       </tr>
                     );
@@ -201,10 +212,10 @@ class Results extends Component {
 
             <Typography variant="body1" />
             <Typography variant="body1" id="simple-modal-description">
-              Preparation Time:{" "}
+              <strong>Preparation Time:</strong>{" "}
               {this.props.recipes.clickedRecipe.preparationMinutes}
               <br />
-              Instructions:
+              <strong>Instructions:</strong>
               <br />
               {this.props.recipes.clickedRecipe.instructions}
             </Typography>
