@@ -37,7 +37,7 @@ import { FOOD_API_KEY_HEADER } from './api-key';
 #### Recipe Book
 
 - The Recipe Book holds all recipes that are included
-
+## Additional Information
 ### Macro To Dos
 
 - Lazy-load or pagination of Recipe Book Results
