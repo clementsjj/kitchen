@@ -5,6 +5,20 @@
 - Currently a work in progress.
 
 ## Alpha v.01
+#### Setup
+- Install dependencies
+`npm i`
+- This app uses spoonacular's api from Mashape
+  - In order to properly use API data, you must sign up for a key from Mashape. 
+- Create /src/actions/api-key.js and include the following code:
+`
+export const FOOD_API_KEY_HEADER =
+  '~~*API KEY HERE*~~';
+`
+- In /src/actions/index.js, make sure to modify the api-key import to include the correct path
+`
+import { FOOD_API_KEY_HEADER } from './api-key';
+`
 
 #### Search Ingredients
 
